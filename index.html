@@ -15,16 +15,16 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="" class="sign-in-form">
+          <form method="post" action="http://onlinemarketbf.onlinewebshop.net/inscription/connexion.php" class="sign-in-form">
             <h2 class="title" > Online Market </h2>
             <h3 class="title">Connectez vous</h3>
             <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Nom d'utilisateur" />
+              <i class="fas fa-envelope"></i>
+              <input name="user_email" type="text" placeholder="Adresse Email" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Mots de passe" />
+              <input name="password"  type="password" placeholder="Mots de passe" />
             </div>
             <input type="submit" value="Se connecter" class="btn solid" />
 
@@ -46,7 +46,7 @@
           </form>
 
 
-          <form method="post" action="http://onlinemarketbf.onlinewebshop.net/inscription/inscription.php" class="sign-up-form">
+          <form action="http://onlinemarketbf.onlinewebshop.net/inscription/inscription.php" class="sign-up-form">
             <h2 class="title">Inscrivez vous</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -114,4 +114,5 @@
 
     <script src="./app.js"></script>
   </body>
-</html>
+              </html>
+              
