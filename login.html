@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignIn&SignUp</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div id="loader-container"></div>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form id="signInForm" class="sign-in-form">
+                    <h2 class="title">Online Market</h2>
+                    <h3 class="title">Connectez-vous</h3>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input name="user_email" id="signInEmail" required="" type="text" placeholder="Adresse Email" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input name="password" id="signInPassword" type="password" required="" onshow="Afficher" placeholder="Mot de passe" />
+                    </div>
+                    <input type="button" onclick="login()" value="Se connecter" class="btn solid" />
+
+                    <p class="social-text">Se connecter avec les plateformes sociales</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </form>
+
+                <form id="signUpForm" class="sign-up-form">
+                    <h2 class="title">Inscrivez-vous</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="user_name" id="signUpName" placeholder="Nom d'utilisateur" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" name="user_email" id="signUpEmail" placeholder="Adresse email" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signUpPassword" name="password" placeholder="Mot de passe" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signUpConfirmPassword" placeholder="Confirmer le mot de passe" />
+                    </div>
+
+                    <div id="pass_error"></div>
+                    <br>
+                    <input type="button" onclick="register()" value="S'inscrire" class="btn solid" />
+
+                     
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>Vous êtes nouveau?</h3>
+                    <p>Cliquez sur le bouton s'inscrire pour vous inscrire rapidement sur notre site.</p>
+                    <button class="btn transparent" id="sign-up-btn">S'inscrire</button>
+                </div>
+                <img src="./img/log.svg" class="image" alt="">
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>Vous avez déjà un compte?</h3>
+                    <p>Cliquez sur le bouton se connecter pour accéder à votre compte.</p>
+                    <button class="btn transparent" id="sign-in-btn">Se connecter</button>
+                </div>
+                <img src="./img/register.svg" class="image" alt="">
+            </div>
+        </div>
+    </div><script>
+    const registerUrl = 'https://issiako21.pythonanywhere.com/add_client'; // Change to your Flask API URL if different
+    const loginUrl = 'https://issiako21.pythonanywhere.com/connect'; // Change to your Flask API URL if different
+
+    function register() {
+        const nom = document.getElementById('signUpName').value;
+        const email = document.getElementById('signUpEmail').value;
+        const password = document.getElementById('signUpPassword').value;
+        const confirmPassword = document.getElementById('signUpConfirmPassword').value;
+
+        // Vérifie si les mots de passe correspondent
+        if (password !== confirmPassword) {
+          
+          
+            document.getElementById('pass_error').innerText = "Les mots de passe ne correspondent pas.";
+            notif_infos("les deux mot de passe ne se correspondent pas")
+            return;
+        }
+if(email==""&&nom==""&&password==""){
+  notif_infos("Veuillez d\'abord remplir le formulaires")
+}else if(email==""){
+  notif_infos("veuillez fournir une adresse email")
+}else if(nom==""){
+  notif_infos("veuillez fournir votre nom d\'utilisateur")
+}else if (password==""){
+notif_infos("veuillez fournir un mot de passe")
+}else{
+        const data = {
+            'nom': nom,
+            'password': password,
+            'email': email
+        };
+
+        fetch(registerUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+             let erreur = "erreur de connexion"
+              notif_erreur(erreur)
+            }
+            return response.json();
+        })
+        .then(data => {
+            if ("token" in data){
+             var name = "token_connexion"
+             var message = "Compte Crée avec succès , Veuillez vous connecter"
+             const action = "reg"
+             add_cookie(name,data.tokenme,message,action) 
+            }else{
+              notif_erreur(data.message)
+            }
+
+        })
+        .catch(error => {
+            notif_erreur(error)
+        });
+    }}
+
+    function login() {
+        const email = document.getElementById('signInEmail').value;
+        const password = document.getElementById('signInPassword').value;
+
+        const data = {
+            'email': email,
+            'password': password
+        };
+if (email==""&&password==""){
+  
+  notif_infos("Veuillez fournir l\'adresse email et le mot de passe de votre compte")
+}else if (email==""){
+  notif_infos("Veuillez fournir votre Email")
+}else if(password==""){
+  notif_infos("Veuillez fournir votre mot de passe")
+}else{
+  load("Connexion en cour Veuillez patientez......")
+        fetch(loginUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                var message = "Problème de Connexion"
+                notif_erreur(message)
+            }
+            return response.json();
+        })
+        .then(data => {
+           if ("token" in data){
+             var name = "token_connexion"
+             var message = "Connexion Reuissi!"
+             const action = "log"
+             add_cookie(name,data.token,message,action)
+             
+           }else{
+             notif_erreur(data.message)
+           }
+           
+
+            
+            
+        })
+        .catch(error => {
+          if (error == "TypeError: Failed to fetch"){
+            var message = "Problème lors de la connexion au serveur"
+            notif_erreur(message)
+          }else{
+          notif_erreur(error)}
+        });
+    } }
+
+    // Script pour basculer entre les formulaires d'inscription et de connexion
+    const signUpBtn = document.getElementById('sign-up-btn');
+    const signInBtn = document.getElementById('sign-in-btn');
+    const container = document.querySelector('.container');
+
+    signUpBtn.addEventListener('click', () => {
+        container.classList.add('sign-up-mode');
+    });
+
+    signInBtn.addEventListener('click', () => {
+        container.classList.remove('sign-up-mode');
+        
+    });
+    
+    
+    function add_cookie(nom,valeur,message,action) {
+    // Date très loin dans le futur (31 décembre 9999)
+    var expires = "expires=Fri, 31 Dec 9999 23:59:59 GMT";
+    
+    // Créer le cookie
+    document.cookie = nom + "=" + valeur + ";" + expires + ";path=/";
+    if (action == "log"){
+      window.location.href = "index.html"
+    }else if(action == "reg"){
+      const signUpBtn = document.getElementById('sign-up-btn');
+    const signInBtn = document.getElementById('sign-in-btn');
+    const container = document.querySelector('.container');
+
+  container.classList.remove('sign-up-mode');
+
+    
+        
+        
+  
+      
+    }
+    
+  notif_succes(message)  
+}
+function notif_succes(message) {
+            Swal.fire({
+                title: 'Success!',
+                text: message,
+                icon: 'success',
+                timer: 4000, // 4 seconds
+                timerProgressBar: true,
+                showConfirmButton: false
+            });
+        }
+
+
+function notif_erreur(message) {
+    Swal.fire({
+        title: 'Error!',
+        text: message,
+        icon: 'error',
+        timer: 4000, // 4 seconds
+        timerProgressBar: true,
+        showConfirmButton: false
+    });
+}
+
+
+function notif_infos(message){
+  Swal.fire({
+        icon: 'info',
+        title: 'Information',
+        text: message,
+        timer: 4000,
+        timerProgressBar: true,
+        showConfirmButton: false
+      });
+}
+</script>
+  <script>
+    var loaderElement = null;
+
+    function startLoader() {
+      if (!loaderElement) {
+        loaderElement = new SVGLoaders.DualRingLoader({
+          container: document.getElementById('loader-container'),
+          width: 64,
+          height: 64,
+          color: '#000',
+          id: 'custom-loader'
+        });
+        loaderElement.show();
+      }
+    }
+
+    function stopLoader() {
+      if (loaderElement) {
+        loaderElement.hide();
+        loaderElement = null;
+      }
+    }
+    
+    function load(message) {
+        Swal.fire({
+            title: message,
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+    }
+  </script>
+</body>
+</html>

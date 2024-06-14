@@ -2,117 +2,320 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SignIn&SignUp</title>
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
   
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Glide js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+    <!-- Custom StyleSheet -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <!-- CSS de Bootstrap (inclus les styles de base et des composants) -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- JavaScript requis pour les composants Bootstrap (incluant les modales) -->
+
+    <title>ecommerce Website</title>
   </head>
   <body>
-    <div class="container">
-      <div class="forms-container">
-        <div class="signin-signup">
-          <form method="post" action="http://onlinemarketbf.onlinewebshop.net/inscription/connexion.php" class="sign-in-form">
-            <h2 class="title" > Online Market </h2>
-            <h3 class="title">Connectez vous</h3>
-            <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <input name="user_email" type="text" placeholder="Adresse Email" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input name="password"  type="password" placeholder="Mots de passe" />
-            </div>
-            <input type="submit" value="Se connecter" class="btn solid" />
+<!-- Inside the navigation -->
 
-            <p class="social-text"> Se connecter avec les plateformes sociales  </p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-          </form>
-
-
-          <form method="post" action="http://onlinemarketbf.onlinewebshop.net/inscription/inscription.php" class="sign-up-form">
-            <h2 class="title">Inscrivez vous</h2>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" name="user_name" placeholder="Nom d'utilisateur" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <input type="email" name="user_email" placeholder="Adresse email" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" id="password" name="password" placeholder="Mots de passe" />
-  
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" id="r_password" placeholder="Confirmer le mots de passe" />
-            </div>
-
+    <!-- Header -->
+    <header class="header" id="header">
+      <!-- Top Nav -->
+      <div class="top-nav">
+        <div class="container d-flex">
+          <p>Contact : (+226)54641531/73713252</p>
+          <ul class="d-flex">
             
-            
-              <div id="pass_error"> </div>
-            
-           <br><input disabled type="submit" id="inscription_bouton" value="S'inscrire" class="btn solid" />
-
-            <p class="social-text">Inscrivez vous via les plateformes sociales</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-          </form>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
         </div>
       </div>
-      <div class="panels-container">
+      <div class="navigation">
+        <div class="nav-center container d-flex">
+        <a href="/" class="logo"><h1>Online Market</h1></a>
 
-        <div class="panel left-panel">
-            <div class="content">
-                <h3>Vous êtes nouveau?</h3>
-                <p>Cliquez sur le bouton s'inscrire pour vous inscrire rapidement sur notre site </p>
-                <button class="btn transparent" id="sign-up-btn">S'inscrire</button>
+          <ul class="nav-list d-flex">
+            <li class="nav-item">
+              <a href="/" class="nav-link">Acceuil</a>
+            </li>
+            <li class="nav-item">
+              <a href="product.html" class="nav-link">Acheter</a>
+            </li>
+            <li class="nav-item">
+            <a href="#boutique" class="nav-link">Boutiques</a>
+            </li>
+             <li class="nav-item">
+            <a href="#boutique" class="nav-link">Dépôt</a>
+            </li>
+             <li class="nav-item">
+            <a href="#boutique" class="nav-link">Rétrait</a>
+            </li>
+            <li class="nav-item">
+              <a href="#about" class="nav-link">A propos de nous</a>
+            </li>
+            <li class="nav-item">
+            <!-- Bouton pour ouvrir la modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#colorModal">
+  Changer les couleurs de la page
+</button>
+            </li>
+            <li class="nav-item">
+  
+            </li>
+            <li class="icons d-flex">
+            <a href="" onclick="profile()"class="icon">
+              <i class="bx bx-user"></i>
+            </a>
+            <div class="icon">
+              <i class="bx bx-search"></i>
             </div>
-            <img src="./img/log.svg" class="image" alt="">
+            <div class="icon">
+              <i class="bx bx-heart"></i>
+              <span class="d-flex">0</span>
+            </div>
+            <a href="cart.html" class="icon">
+              <i class="bx bx-cart"></i>
+              <span class="d-flex">0</span>
+            </a>
+          </li>
+          </ul>
+
+          <div class="icons d-flex">
+            <a  onclick="profile()"class="icon">
+              <i class="bx bx-user"></i>
+            </a>
+            <div class="icon">
+              <i class="bx bx-search"></i>
+            </div>
+            <div class="icon">
+              <i class="bx bx-heart"></i>
+              <span class="d-flex">0</span>
+            </div>
+            <a href="cart.html" class="icon">
+              <i class="bx bx-cart"></i>
+              <span class="d-flex">0</span>
+            </a>
+          </div>
+
+          <div class="hamburger">
+            <i class="bx bx-menu-alt-left"></i>
+          </div>
         </div>
-
-        <div class="panel right-panel">
-            <div class="content">
-                <h3>Vous avez deja un compte?</h3>
-                <p>Cliquez sur le bouton se connectez pour vous connectez à votre compte.</p>
-                <button class="btn transparent" id="sign-in-btn">Se connectez</button>
-            </div>
-            <img src="./img/register.svg" class="image" alt="">
+      </div>
+<div class="search-bar">
+  <input type="text" placeholder="Rechercher...">
+  <button><i class="bx bx-search"></i></button>
+</div>
+    <div class="hero">
+      <div class="glide" id="glide_1">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+            <li class="glide__slide">
+              <div class="center">
+                <div class="left">
+                  <span class="">Bienvenue sur Online Market</span>
+                  <h1 class="">Achetez et vendez</h1>
+                  <p>Retrouvez des Boutiques avec des avec des produits de qualité</p>
+                  <a href="#" class="hero-btn">Voir les produits</a>
+                </div>
+                <div class="right">
+                    <img class="img1" src="./images/hero-1.png" alt="">
+                </div>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="center">
+                <div class="left">
+                  <span>Bienvenue sur Online Market</span>
+                  <h1>Créer votre botique en ligne dès Maintenant</h1>
+                  <p>Faite promouvoir vos produits avec E-Boutique</p>
+                  <a href="#" class="hero-btn">Créer Ma Boutique</a>
+                </div>
+                <div class="right">
+                  <img class="img2" src="./images/hero-2.png" alt="">
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
+    </header>
 
-    <script src="./app.js"></script>
+    <!-- Categories Section -->
+
+
+
+
+
+
+
+    <section class="section contact">
+      <div class="row">
+        <div class="col">
+          <h2>EXCELLENT SUPPORT</h2>
+          <p>Nous aimons nos clients et ils peuvent nous contacter à tout moment de la journée. Nous serons à votre service 24h/24 et 7j/7.</p>
+          <a href="" class="btn btn-1">Contact</a>
+        </div>
+        <div class="col">
+          <form action="">
+            <div>
+              <input type="email" placeholder="Email Address">
+            <a href="">Send</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="row">
+        <div class="col d-flex">
+          <h4>INFORMATION</h4>
+          <a href="">A propos de nous</a>
+          <a href="">Contactez nous</a>
+          <a href="">Notre politique et condition</a>
+          <a href="">Assitant Robot</a>
+        </div>
+        <div class="col d-flex">
+          <h4>LIENS UTILES</h4>
+          <a href="">Boutique en ligne</a>
+          <a href="">Service Clientelle</a>
+          <a href="">Promotion</a>
+          <a href="">Nouveauté</a>
+        </div>
+        <div class="col d-flex">
+          <span><i class='bx bxl-facebook-square'></i></span>
+          <span><i class='bx bxl-instagram-alt' ></i></span>
+          <span><i class='bx bxl-github' ></i></span>
+          <span><i class='bx bxl-twitter' ></i></span>
+          <span><i class='bx bxl-pinterest' ></i></span>
+        </div>
+      </div>
+    </footer>
+
+
+  <!-- PopUp -->
+  <div class="popup hide-popup">
+    <div class="popup-content">
+      <div class="popup-close">
+        <i class='bx bx-x'></i>
+      </div>
+      <div class="popup-left">
+        <div class="popup-img-container">
+          <img class="popup-img" src="./images/popup.jpg" alt="popup">
+        </div>
+      </div>
+      <div class="popup-right">
+        <div class="right-content">
+          <h1>Obtenez une reduction <span>50%</span> </h1>
+          <p>Entrez votre adresse Email pour ne rien rater!
+          </p>
+          <form action="#">
+            <input type="email" placeholder="Entrez votre adresse email" class="popup-form">
+            <a href="#">S'abonnez</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="colorModal" tabindex="-1" role="dialog" aria-labelledby="colorModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="colorModalLabel">Changer les couleurs de la page</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Sélectionnez une couleur pour la page :</p>
+        <div class="color-options">
+          <div class="color-option" onclick="changeColor('#007bff')"></div> <!-- Bleu -->
+          <div class="color-option" onclick="changeColor('#28a745')"></div> <!-- Vert -->
+          <div class="color-option" onclick="changeColor('#dc3545')"></div> <!-- Rouge -->
+          <div class="color-option" onclick="changeColor('#ffc107')"></div> <!-- Jaune -->
+          <div class="color-option" onclick="changeColor('#17a2b8')"></div> <!-- Turquoise -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts JavaScript -->
+
+<script>
+//cherche le profile
+function profile() {
+    var token_connexion = checkCookie('token_connexion');
+
+    if (token_connexion) {
+        var data = {
+            'token_connexion': token_connexion
+        }
+        var url = "https://example.com"; // Example URL, should be complete
+
+        // Further actions using 'data' and 'url' can be added here
+    } else {
+        var message = "Vous n'êtes pas connecté";
+        
+        notif_erreur(message);
+        window.location.href = "login.html"
+    }
+}
+
+function checkCookie(cookieName) {
+    // Récupérer tous les cookies dans une chaîne
+    var cookies = document.cookie;
+
+    // Diviser la chaîne en tableau de cookies individuels
+    var cookieArray = cookies.split(';');
+
+    // Parcourir tous les cookies pour vérifier si le cookieName existe
+    for (var i = 0; i < cookieArray.length; i++) {
+        var cookie = cookieArray[i].trim(); // Supprimer les espaces autour du cookie
+
+        // Vérifier si le cookie commence par le nom du cookie recherché
+        if (cookie.indexOf(cookieName + '=') === 0) {
+            return true; // Le cookie existe
+        }
+    }
+    
+    // Si le cookie n'est pas trouvé
+    return false;
+}
+
+function notif_erreur(message) {
+    // Afficher une notification d'erreur
+    Swal.fire({
+        title: 'Error!',
+        text: message,
+        icon: 'error',
+        timer: 4000, // 4 seconds
+        timerProgressBar: true,
+        showConfirmButton: false
+    });
+}
+</script>
+
   </body>
-              </html>
-              
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+  <script src="./js/slider.js"></script>
+  <script src="./js/index.js"></script>
+</html>
